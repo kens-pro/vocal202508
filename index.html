@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【キャンペーン】滋賀・大津の声と健康のボイトレ教室 - トリイ大津わにセンター</title>
+    <meta name="description" content="滋賀県大津市のヴォーカル教室です。小学生から大人まで、歌を楽しみたいすべての方へ。特に声の変化を感じ始めた40代以上の方におすすめの、健康にも繋がるボイストレーニング。無料体験受付中！">
+    <meta name="keywords" content="滋賀 ヴォーカル教室, 大津 ボイストレーニング, 歌 教室, 40代, 50代, 60代, 健康, 発声, 声の悩み, シニア, 趣味">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* === BASE STYLES & COLOR PALETTE === */
+        :root {
+            --color-bg: #FFFFFF;
+            --color-bg-alt: #F8F8F8;
+            --color-text: #333333;
+            --color-text-light: #555555;
+            --color-border: #EEEEEE;
+            --color-green-deep: #4A5C52;
+            --color-green-medium: #6C8B7C;
+            --color-green-light: #A6B9B0;
+            --color-blue-muted: #5E8098;
+            --color-accent-gold: #C9A46A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-padding-top: 80px; }
+        body {
+            font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            scroll-behavior: smooth;
+            font-size: 16px;
+            padding-top: 80px;
+        }
+        a { text-decoration: none; color: var(--color-blue-muted); }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 80px 0; }
+        .text-center { text-align: center; }
+        .note-text { font-size: 0.9em; color: #999; text-align: center; margin-top: 30px; }
+
+        /* === HEADER === */
+        .site-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000; padding: 15px 0; height: 80px;
+            transition: box-shadow 0.3s ease;
+        }
+        .site-header .container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+        .logo-link img { max-height: 40px; width: auto; }
+        .header-cta { padding: 8px 20px; font-size: 1em; margin: 0; }
+
+        /* === HEADINGS === */
+        h1, h2, h3 {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-weight: 700; color: var(--color-green-deep);
+            margin-bottom: 24px; line-height: 1.4;
+        }
+        h1 { font-size: 3em; }
+        h2 {
+            font-size: 2.4em; text-align: center; margin-bottom: 50px;
+            position: relative; padding-bottom: 15px;
+        }
+        h2::after {
+            content: ''; display: block; width: 80px; height: 3px;
+            background-color: var(--color-green-light);
+            margin: 15px auto 0; border-radius: 1.5px;
+        }
+        h3 { font-size: 1.8em; color: var(--color-green-medium); }
+        
+        /* === CTA BUTTONS === */
+        .cta-button {
+            display: inline-block; background-color: var(--color-green-deep);
+            color: white; padding: 18px 35px; font-size: 1.3em;
+            font-weight: 700; border-radius: 8px; transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 10px; border: none; cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: var(--color-green-medium);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .cta-button.secondary { background-color: var(--color-blue-muted); }
+        .cta-button.outline {
+            background-color: transparent;
+            color: var(--color-blue-muted);
+            border: 2px solid var(--color-blue-muted);
+        }
+
+        /* === SCROLL ANIMATION === */
+        .animated-section {
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            opacity: 0; transform: translateY(20px);
+        }
+        .animated-section.is-visible { opacity: 1; transform: translateY(0); }
+        
+        /* === HERO SECTION === */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://via.placeholder.com/1200x800/E5E5E5/AAAAAA?text=教室の高品質な背景画像') no-repeat center center/cover;
+            min-height: calc(100vh - 80px); display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 60px 20px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .hero-content { max-width: 900px; }
+        .hero .subtitle { font-size: 1.5em; color: var(--color-green-medium); font-weight: 600; margin-bottom: 15px; }
+        .hero p { font-size: 1.3em; color: var(--color-text-light); margin-bottom: 35px; }
+        .trust-indicators { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 1.1em; color: var(--color-text-light); }
+        .trust-item .icon { color: var(--color-green-medium); }
+
+        /* === TARGET SECTION (NEW) === */
+        .target-section { background-color: var(--color-bg-alt); }
+        .target-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .target-card {
+            background: var(--color-bg); padding: 30px; border-radius: 12px;
+            text-align: center; border: 1px solid var(--color-border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+        }
+        .target-card .icon { font-size: 2.5em; color: var(--color-blue-muted); margin-bottom: 15px; }
+        .target-card h3 { font-size: 1.4em; color: var(--color-blue-muted); margin-bottom: 15px; }
+        .target-card p { color: var(--color-text-light); font-size: 1em; }
+
+        /* === PROBLEM & BENEFITS === */
+        .list-section { background-color: var(--color-bg-alt); }
+        .list-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .list-card { background: var(--color-bg); padding: 25px; border-radius: 8px; display: flex; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.03); border: 1px solid var(--color-border); }
+        .list-card .icon { font-size: 1.8em; margin-right: 20px; flex-shrink: 0; width: 30px; text-align: center; }
+        .list-card .text { font-size: 1.1em; color: var(--color-text-light); }
+        .list-card .text strong { color: var(--color-text); }
+        .problem-list .icon { color: var(--color-blue-muted); }
+        .benefit-list .icon { color: var(--color-green-medium); }
+
+        /* === REASONS & TESTIMONIALS === */
+        .card-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .info-card { background: var(--color-bg); padding: 40px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center; transition: all 0.2s ease; border: 1px solid var(--color-border); }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .info-card .icon { font-size: 2.8em; margin-bottom: 20px; display: block; color: var(--color-green-light); }
+        .info-card h3 { color: var(--color-green-medium); }
+        .testimonial-card { text-align: left; }
+        .testimonial-card p { font-style: italic; margin-bottom: 15px; color: var(--color-text-light); }
+        .testimonial-author { display: flex; align-items: center; gap: 15px; font-weight: 600; color: #555555; margin-top: 15px; }
+        .testimonial-author .avatar { width: 50px; height: 50px; border-radius: 50%; background-color: #E0E0E0; display: flex; align-items: center; justify-content: center; color: #777777; font-size: 1.2em; }
+        .after-testimonials-text { text-align: center; margin: 50px 0 0; font-size: 1.3em; font-weight: 700; color: var(--color-green-medium); }
+        
+        /* === INSTRUCTOR SECTION === */
+        .instructor-section { background-color: var(--color-bg-alt); }
+        .instructor-content { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: center; }
+        .instructor-img { max-width: 250px; border-radius: 12px; object-fit: cover; border: 1px solid var(--color-border); box-shadow: 0 5px 15px rgba(0,0,0,0.05); justify-self: center; }
+        .instructor-info { background: var(--color-bg); padding: 40px; border-radius: 12px; border: 1px solid var(--color-border); }
+
+        /* === PRICING & TRIAL === */
+        .pricing-section { background-color: var(--color-bg-alt); }
+        .pricing-card { background: white; padding: 50px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; max-width: 600px; margin: 0 auto; border: 1px solid var(--color-border); }
+        .price-highlight { font-size: 2.5em; font-weight: 700; color: var(--color-green-deep); margin: 30px 0; }
+        .price-details { list-style: none; padding: 0; margin: 30px 0; }
+        .price-details li { padding: 15px 0; border-bottom: 1px solid var(--color-border); }
+
+        .trial-section { background-color: var(--color-green-medium); color: white; }
+        .trial-section h2, .trial-section p { color: white; }
+        .trial-section h2::after { background-color: white; }
+        .campaign-highlight { background-color: var(--color-green-deep); color: white; padding: 30px; border-radius: 12px; font-weight: 700; text-align: center; margin: 40px auto; font-size: 1.3em; max-width: 700px; }
+        .campaign-highlight .deadline { color: var(--color-accent-gold); display: block; margin-top: 15px; font-size: 1em; font-weight: 700; }
+        .trial-form { display: grid; gap: 15px; max-width: 500px; margin: 40px auto 0; background: var(--color-bg); padding: 30px; border-radius: 12px; color: var(--color-text); text-align: left; }
+        .trial-form label { font-weight: 600; }
+        .trial-form input, .trial-form select, .trial-form textarea { width: 100%; padding: 12px; border: 1px solid var(--color-border); border-radius: 8px; font-size: 1em; }
+        .trial-form button { width: 100%; margin: 10px 0 0; }
+        
+        /* === FAQ & ACCESS === */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.03); border: 1px solid var(--color-border); }
+        .faq-item summary { font-weight: 600; padding: 25px 30px; cursor: pointer; outline: none; color: var(--color-blue-muted); list-style: none; position: relative; background-color: var(--color-bg-alt); font-size: 1.1em; }
+        .faq-item summary::after { content: '+'; position: absolute; right: 30px; font-size: 1.5em; font-weight: 700; transition: transform 0.2s ease; color: #999999; }
+        .faq-item details[open] summary::after { transform: rotate(45deg); }
+        .faq-item p { padding: 25px 30px; background: white; }
+
+        .access-section { background-color: var(--color-bg-alt); }
+        .access-card { background: white; padding: 50px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center; max-width: 800px; margin: 0 auto; border: 1px solid var(--color-border); }
+        .access-details { list-style: none; padding: 0; margin: 30px 0; }
+        .access-details li { padding: 15px 0; border-bottom: 1px solid var(--color-border); }
+        .map-container { width: 100%; height: 400px; margin-top: 30px; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
+
+        /* === OFFICIAL SITE LINK (NEW) === */
+        .official-site-section { text-align: center; }
+        .official-site-section p { max-width: 700px; margin: 0 auto 30px; }
+
+        /* === FINAL CTA & FOOTER === */
+        .final-cta { background-color: var(--color-green-deep); color: white; padding: 80px 20px; text-align: center; }
+        .final-cta h2, .final-cta p, .final-cta a { color: white; }
+        .final-cta h2::after { background-color: white; }
+        .final-cta .cta-button { background: white; color: var(--color-green-deep); }
+        .tel-info { margin-top: 40px; }
+        .tel-number { font-size: 2.2em; font-weight: 700; display: block; }
+        footer { text-align: center; padding: 40px 20px; color: #BBBBBB; background-color: #333333; }
+        
+        /* === FLOATING CTA === */
+        .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: var(--color-green-deep); color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); font-weight: 700; transition: all 0.2s ease; animation: pulse 2.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 2em; }
+            .section-padding { padding: 60px 0; }
+            .hero p { font-size: 1.1em; line-height: 1.8; }
+            .list-card-grid, .card-section, .instructor-content, .target-grid { grid-template-columns: 1fr; }
+            .instructor-img { max-width: 180px; height: 180px; }
+            .cta-button { font-size: 1.1em; padding: 15px 25px; }
+            .floating-cta { padding: 12px 20px; font-size: 1em; }
+            .header-cta { display: none; }
+            .site-header .container { justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating CTA -->
+    <a href="#trial" class="floating-cta">無料体験はこちら</a>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <!-- ロゴは総合ページへ（誤解回避） -->
+            <a href="https://www.toriimusic.co.jp/school/center/otsu-wani.php" class="logo-link" target="_blank" rel="noopener" aria-label="トリイ大津わにセンター総合ページへ">
+                <img src="image/favicon.png" alt="トリイミュージックスクール ロゴ">
+            </a>
+            <nav class="header-nav">
+                <a href="#trial" class="cta-button header-cta">無料体験申込</a>
+            </nav>
+        </div>
+    </header>
+    <!-- /Header -->
+    
+    <!-- Hero Section -->
+    <div class="hero animated-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="subtitle">歌うって、楽しい！</div>
+                <h1>声と笑顔が輝きだす、<br>私だけの30分。</h1>
+                <p>小学生からシニアの方まで、一人ひとりの「歌いたい」に寄り添います。<br>特に、最近声の変化を感じ始めた40代・50代の方に、心と身体が元気になるレッスンをご案内します。</p>
+                
+                <div class="trust-indicators">
+                    <div class="trust-item"><i class="fas fa-gift icon"></i>気軽に体験OK</div>
+                    <div class="trust-item"><i class="fas fa-user-tie icon"></i>プロ講師が担当</div>
+                    <div class="trust-item"><i class="fas fa-user icon"></i>マンツーマン</div>
+                </div>
+                
+                <a href="#trial" class="cta-button">まずは体験レッスンから</a>
+                <a href="tel:0740222063" class="cta-button secondary" aria-label="電話で相談 0740-22-2063">電話で相談してみる</a>
+
+                <!-- 全年齢歓迎の注記（専門化誤解の回避） -->
+                <p class="note-text" style="margin-top:10px;">※当教室は小学生から大人まで全年齢歓迎です。このページは「40〜50代にもおすすめ」のご案内です。</p>
+            </div>
+        </div>
+    </div>
+    <!-- /Hero Section -->
+
+    <main>
+        <!-- Target Section (NEW) -->
+        <section id="target" class="target-section animated-section section-padding">
+            <div class="container">
+                <h2>あなたの「歌いたい」は、どんな気持ちですか？</h2>
+                <div class="target-grid">
+                    <div class="target-card">
+                        <div class="icon"><i class="fas fa-school"></i></div>
+                        <h3>学生・社会人の方へ</h3>
+                        <p>カラオケが上手くなりたい、もっと表現力をつけたい。基礎からしっかり学んで、歌うことの本当の楽しさを見つけませんか？</p>
+                    </div>
+                    <div class="target-card">
+                        <div class="icon"><i class="fas fa-guitar"></i></div>
+                        <h3>趣味を楽しみたい<br>40代・50代の方へ</h3>
+                        <p>若い頃に諦めた夢、新しい趣味。今だからこそ、自分のための時間を大切に。歌仲間との交流も楽しめます。</p>
+                    </div>
+                    <div class="target-card">
+                        <div class="icon"><i class="fas fa-seedling"></i></div>
+                        <h3>健康を育みたい<br>60代以上の方へ</h3>
+                        <p>大きな声を出すことは、心と身体の元気の源。楽しみながら健康維持に繋がる、一石二鳥の習慣をはじめましょう。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Target Section -->
+
+        <!-- Problem Section -->
+        <section id="problems" class="list-section animated-section section-padding" style="background-color: var(--color-bg);">
+            <div class="container">
+                <h2>最近、こんなことを感じていませんか？</h2>
+                <div class="list-card-grid problem-list">
+                    <div class="list-card"><i class="fas fa-volume-mute icon"></i><div class="text">昔みたいに、声にハリがなくなった気がする</div></div>
+                    <div class="list-card"><i class="fas fa-microphone-slash icon"></i><div class="text">高い声が出にくくなった、長く歌うと声がかすれる</div></div>
+                    <div class="list-card"><i class="fas fa-wind icon"></i><div class="text">少し歌っただけですぐに息が切れてしまう</div></div>
+                    <div class="list-card"><i class="fas fa-eye-slash icon"></i><div class="text">人前で歌うのは、少し自信がない…</div></div>
+                    <div class="list-card"><i class="fas fa-person-falling icon"></i><div class="text">気づけば猫背気味で、呼吸が浅いかもしれない</div></div>
+                    <div class="list-card"><i class="fas fa-cloud icon"></i><div class="text">日々のストレスを、スッキリ発散したい！</div></div>
+                </div>
+            </div>
+        </section>
+        <!-- /Problem Section -->
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="list-section animated-section section-padding">
+            <div class="container">
+                <h2>歌う習慣がもたらす、嬉しい変化</h2>
+                <div class="list-card-grid benefit-list">
+                    <div class="list-card"><i class="fas fa-lungs icon"></i><div class="text"><strong>深い呼吸でリフレッシュ！</strong> 気持ちが前向きに</div></div>
+                    <div class="list-card"><i class="fas fa-child-reaching icon"></i><div class="text"><strong>自然と良い姿勢に！</strong> 見た目の印象も若々しく</div></div>
+                    <div class="list-card"><i class="fas fa-face-smile-beam icon"></i><div class="text"><strong>思いきり声を出してスッキリ！</strong> 心のモヤモヤも解消</div></div>
+                    <div class="list-card"><i class="fas fa-brain icon"></i><div class="text"><strong>脳のトレーニングにも！</strong> 歌詞を覚えて脳を活性化</div></div>
+                    <div class="list-card"><i class="fas fa-hand-sparkles icon"></i><div class="text"><strong>自分に自信がつく！</strong> 新しい自分を発見できるかも</div></div>
+                    <div class="list-card"><i class="fas fa-shield-heart icon"></i><div class="text"><strong>表情筋を動かして！</strong> 明るく豊かな表情に</div></div>
+                </div>
+                <p class="note-text">※上記は期待できる効果の一例です。効果の現れ方には個人差があります。</p>
+            </div>
+        </section>
+        <!-- /Benefits Section -->
+
+        <!-- Reasons Section -->
+        <section id="reasons" class="animated-section section-padding">
+            <div class="container">
+                <h2>私たちが選ばれる3つの理由</h2>
+                <div class="card-section">
+                    <div class="info-card">
+                        <div class="icon"><i class="fas fa-bullseye"></i></div>
+                        <h3>一人ひとりの身体に合わせた<br>からだにやさしいボイストレーニング</h3>
+                        <p>年齢や体力、声の状態は人それぞれ。声の特徴に合わせて、身体に負担の少ない発声を丁寧にサポート。無理なく楽しく続けられます。</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h3>プロの講師と楽しむ<br>マンツーマンレッスン</h3>
+                        <p>あなたの声質や目標に合わせたオーダーメイドのレッスンです。「この曲が歌いたい」というリクエストも大歓迎。あなたのペースを大切にします。</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon"><i class="fas fa-heart-pulse"></i></div>
+                        <h3>音楽の楽しさを大切にする<br>安心のレッスン環境</h3>
+                        <p>上手い下手は関係ありません。一番大切なのは「歌うことを楽しむ気持ち」です。アットホームな雰囲気で、安心して声を出せる場所です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Reasons Section -->
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="animated-section section-padding" style="background-color: var(--color-bg-alt);">
+            <div class="container">
+                <h2>レッスンを受けた方々の声</h2>
+                <div class="card-section">
+                    <div class="info-card testimonial-card">
+                        <p>「50代を過ぎて声がかすれがちになり、もう歌うのは無理かなと思っていました。でも先生のレッスンで呼吸から見直したら、また声が出るように！今では孫とカラオケに行くのが楽しみです。」</p>
+                        <div class="testimonial-author">
+                            <div class="avatar">田</div><span>田中さん (50代・女性)</span>
+                        </div>
+                         <p class="note-text" style="margin-top: 15px; text-align: left;">※個人の感想です。</p>
+                    </div>
+                    <div class="info-card testimonial-card">
+                        <p>「仕事のプレゼンで声が通らないのが悩みでした。ボイトレを始めてから、同僚に『声に自信が出たね』と言われました。歌だけでなく、仕事にも良い影響があって嬉しいです。」</p>
+                        <div class="testimonial-author">
+                            <div class="avatar">佐</div><span>佐藤さん (40代・男性)</span>
+                        </div>
+                        <p class="note-text" style="margin-top: 15px; text-align: left;">※個人の感想です。</p>
+                    </div>
+                    <div class="info-card testimonial-card">
+                        <p>「地域の合唱団に入ったものの、なかなかついていけず…。マンツーマンで丁寧にみてもらえたお陰で、今では自信を持って歌えるようになりました。健康にも良いし、始めてよかったです！」</p>
+                        <div class="testimonial-author">
+                            <div class="avatar">山</div><span>山田さん (60代・女性)</span>
+                        </div>
+                        <p class="note-text" style="margin-top: 15px; text-align: left;">※個人の感想です。</p>
+                    </div>
+                </div>
+                <div class="after-testimonials-text">あなたも、声の変化を楽しんでみませんか？</div>
+            </div>
+        </section>
+        <!-- /Testimonials Section -->
+
+        <!-- Instructor Section -->
+        <section id="instructor" class="animated-section section-padding">
+            <div class="container">
+                <h2>講師紹介</h2>
+                <div class="instructor-content">
+                    <img src="image/school_photo_mito.webp" alt="ボーカル講師MITO（美笑）のレッスン風景" class="instructor-img">
+                    <div class="instructor-info">
+                        <h3>MITO先生〈美笑：Vocal〉</h3>
+                        <p><strong>ごあいさつ：</strong><br>
+                        こんにちは、講師のMITOです。私もバンドでデビューし、歌うことでたくさんの喜びや壁を経験してきました。だからこそ分かる「声の悩み」や「歌う楽しさ」があります。</p>
+                        <p><strong>レッスンで大切にしていること：</strong><br>
+                        私のレッスンでは、難しい理論よりも、まず気持ちよく声を出す楽しさを感じていただくことを一番大切にしています。年齢を重ねて出てくる声の変化にも、しっかり寄り添います。あなたの「歌いたい」という気持ちを、全力でサポートさせてください！</p>
+                        <p style="margin-top:10px;">「うまさ」よりも「気持ちよさ」から。安心して声を出せる場づくりを大切にしています。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Instructor Section -->
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section animated-section section-padding">
+            <div class="container">
+                <h2>レッスン料金のご案内</h2>
+                <div class="pricing-card">
+                    <h3>マンツーマンレッスン</h3>
+                    <div class="price-highlight">月額 9,900円</div>
+                    <ul class="price-details">
+                        <li><strong>レッスン回数：</strong> 月3回</li>
+                        <li><strong>レッスン時間：</strong> 30分/回</li>
+                        <li><strong>開講日：</strong> 金曜日午後</li>
+                        <li><strong>料金：</strong> 施設費・消費税込み</li>
+                        <li><strong>入会金：</strong> 5,500円（キャンペーンでお得に！）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- /Pricing Section -->
+
+        <!-- Trial Section -->
+        <section id="trial" class="trial-section animated-section section-padding">
+            <div class="container">
+                <h2>さあ、まずは歌う楽しさを体験！</h2>
+                <p style="font-size: 1.3em; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    「どんな雰囲気かな？」「私にもできる？」そんな気持ちに応える、2つの安心プランをご用意しました。
+                </p>
+                <div class="campaign-highlight">
+                    <p>🎉 <strong>このページをご覧の方だけの特別キャンペーン！</strong> 🎉</p>
+                    <p>✅ 無料体験後の当日入会で <strong>入会金5,500円が【50%OFF】！</strong><br>
+                       ✅ おためし3回レッスンからの本コースご入会で <strong>入会金5,500円が【無料】となります！</strong></p>
+                    <div class="deadline">※ 2025年8月31日まで／先着10名様限定</div>
+                    <p class="note-text" style="color:#fff;">※おためし3回からご入会の場合は初月開始時点で適用。ほか割引との併用不可。</p>
+                </div>
+
+                <form action="https://formspree.io/f/xqalrprw" method="POST" class="trial-form">
+                    <label for="name">お名前*</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="phone">電話番号*</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="inquiry_type">ご希望のプラン*</label>
+                    <select id="inquiry_type" name="inquiry_type" required>
+                        <option value="">選択してください</option>
+                        <option value="無料体験レッスン">無料体験レッスン (0円)</option>
+                        <option value="おためし3回レッスン">おためし3回レッスン (3,300円)</option>
+                    </select>
+
+                    <label for="message">ご希望日時やご質問など</label>
+                    <textarea id="message" name="message" rows="4" placeholder="例：平日の午前中希望です。カラオケが上手くなりたいです。"></textarea>
+                    
+                    <button type="submit" class="cta-button">上記の内容で申し込む</button>
+                </form>
+                <p style="font-size: 0.9em; margin-top: 15px;">お電話でのお申し込みも歓迎です！ <a href="tel:0740222063" style="color: white; text-decoration: underline;" aria-label="電話で申し込み 0740-22-2063">0740-22-2063</a></p>
+            </div>
+        </section>
+        <!-- /Trial Section -->
+
+        <!-- FAQ Section -->
+        <section id="faq" class="animated-section section-padding">
+            <div class="container">
+                <h2>よくあるご質問</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <details>
+                            <summary>Q. 全くの初心者で、楽譜も読めないのですが大丈夫ですか？</summary>
+                            <p>A. はい、全く問題ありません！生徒さんの多くが初心者からスタートされています。楽譜が読めなくても、耳で覚えて楽しく歌うことから始められますので、ご安心ください。</p>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>Q. 60代、70代でもレッスンについていけますか？</summary>
+                            <p>A. もちろんです。歌うことに年齢は関係ありません。健康維持や日々の楽しみとして始められる方もたくさんいらっしゃいます。一人ひとりの体力やペースに合わせてレッスンを進めますので、ご安心ください。</p>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>Q. 最近、高い声が出にくくなったのですが…</summary>
+                            <p>A. 年齢と共に声の出し方が変化することは自然なことです。無理に高い声を出そうとせず、まずは楽に響く声を見つけることから始めましょう。正しい呼吸法や体の使い方で、声は変わっていきますよ。</p>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>Q. 歌うとすぐに疲れてしまいます…</summary>
+                            <p>A. もしかしたら、喉に余計な力が入っているのかもしれませんね。レッスンでは、体全体をリラックスさせるストレッチから始めます。体全体で楽に声を響かせる感覚を一緒に見つけていきましょう。</p>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>Q. どれくらいで変化を感じられますか？</summary>
+                            <p>A. 個人差がありますが、まずは「楽に声を出す感覚」を目標にします。声に慣れてくると、少しずつ歌いやすさの変化を感じる方が多いです。</p>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>Q. 体験レッスンだけでも大丈夫ですか？</summary>
+                            <p>A. はい、もちろん大歓迎です！無理な勧誘は一切いたしません。「どんな先生かな？」「どんな雰囲気かな？」と、まずは気軽に教室の雰囲気を確かめにいらしてください。</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /FAQ Section -->
+
+        <!-- Official Site Link Section (NEW) -->
+        <section id="official-site" class="official-site-section animated-section section-padding" style="background-color: var(--color-bg-alt);">
+            <div class="container">
+                <h2>他のコースにもご興味のある方へ</h2>
+                <p>
+                    このページは、特に40代以上の方におすすめのレッスンをご案内するキャンペーンページです。<br>
+                    トリイミュージックスクールでは、ピアノやギター、ドラムなど、他にも様々な楽器のレッスンを開講しています。ご家族やお子様の習い事にご興味のある方は、ぜひ公式サイトもご覧ください。
+                </p>
+                <a href="https://www.toriimusic.co.jp/school/center/otsu-wani.php" target="_blank" rel="noopener" class="cta-button outline">トリイ大津わにセンター総合ページへ</a>
+            </div>
+        </section>
+        <!-- /Official Site Link Section -->
+
+        <!-- Access Section -->
+        <section id="access" class="access-section animated-section section-padding">
+            <div class="container">
+                <h2>教室案内・アクセス</h2>
+                <div class="access-card">
+                    <h3>トリイ大津わにセンター ヴォーカル＆ヴォイトレ教室</h3>
+                    <ul class="access-details">
+                        <li><strong>📍 住所：</strong> 〒520-0524 滋賀県大津市和邇中浜366 今西ビル２F</li>
+                        <li><strong>🚃 アクセス：</strong> JR湖西線 和邇駅前 徒歩すぐ！</li>
+                        <li><strong>🕒 受付時間：</strong> 10:30〜19:30（月曜定休）</li>
+                        <li><strong>📞 電話：</strong> 0740-22-2063</li>
+                        <li><strong>🚗 駐車場：</strong> あり（お車でのお越しも安心）</li>
+                    </ul>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1630.921880195848!2d135.9220797!3d35.1605171!3m2!1i1024!i768!4f13.1!3m3!1m2!1s0x60019f0aad4ed809%3A0x165619b268a1bc88!2z44Ok44Oe44OP6Z-z5qW95pWZ5a6kIOODiOODquOCpOWkp-a0peOCj-OBq-OCu-ODs-OCv-ODvA!5e0!3m2!1sja!2sjp!4v1753024740058!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="トリイ大津わにセンターの地図"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Access Section -->
+        
+        <!-- Final CTA Section -->
+        <section id="contact" class="final-cta animated-section section-padding">
+            <div class="container">
+                <h2>あなたの「歌いたい」を、<br>ここから始めませんか？</h2>
+                <p>まずは一度、気軽に声を出しに来てください。<br>新しい自分に出会う、楽しい時間が待っています！</p>
+                <a href="#trial" class="cta-button">無料体験を申し込む</a>
+                <div class="tel-info">
+                    <div class="tel-number"><a href="tel:0740222063" aria-label="電話で相談 0740-22-2063">📞 0740-22-2063</a></div>
+                    <div class="tel-subtext">受付時間：10:30〜19:30（月曜定休）</div>
+                </div>
+            </div>
+        </section>
+        <!-- /Final CTA Section -->
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 トリイミュージックスクール. All rights reserved.</p>
+            <p><a href="https://www.toriimusic.co.jp/privacy_policy/" target="_blank" rel="noopener" style="color:#BBBBBB;text-decoration:underline;">プライバシーポリシー</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scroll for anchor links (internal only)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (!targetId || targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const headerOffset = 80; /* Match header height */
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Intersection Observer for fade-in animations
+            const sections = document.querySelectorAll('.animated-section');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Animate only once
+                    }
+                });
+            }, observerOptions);
+            sections.forEach(section => observer.observe(section));
+
+            // Floating CTA hide/show based on scroll position
+            const floatingCta = document.querySelector('.floating-cta');
+            const trialSection = document.querySelector('#trial');
+            if(floatingCta && trialSection) {
+                window.addEventListener('scroll', () => {
+                    const trialRect = trialSection.getBoundingClientRect();
+                    if (trialRect.top < window.innerHeight + 100) {
+                        floatingCta.style.opacity = '0';
+                        floatingCta.style.pointerEvents = 'none';
+                    } else {
+                        floatingCta.style.opacity = '1';
+                        floatingCta.style.pointerEvents = 'auto';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
