@@ -437,24 +437,39 @@
                 </div>
 
                 <form action="https://formspree.io/f/xqalrprw" method="POST" class="trial-form">
-                    <label for="name">お名前*</label>
-                    <input type="text" id="name" name="name" required>
-                    
-                    <label for="phone">電話番号*</label>
-                    <input type="tel" id="phone" name="phone" required>
+    <label for="name">お名前*</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="phone">電話番号*</label>
+    <input type="tel" id="phone" name="phone" required>
 
-                    <label for="inquiry_type">ご希望のプラン*</label>
-                    <select id="inquiry_type" name="inquiry_type" required>
-                        <option value="">選択してください</option>
-                        <option value="無料体験レッスン">無料体験レッスン (0円)</option>
-                        <option value="おためし3回レッスン">おためし3回レッスン (3,300円)</option>
-                    </select>
+    <!-- ▼▼▼ ここにメールアドレス欄を追加しました ▼▼▼ -->
+    <label for="email">メールアドレス*</label>
+    <input type="email" id="email" name="email" required>
+    <!-- ▲▲▲ ここまで追加 ▲▲▲ -->
 
-                    <label for="message">ご希望日時やご質問など</label>
-                    <textarea id="message" name="message" rows="4" placeholder="例：平日の午前中希望です。カラオケが上手くなりたいです。"></textarea>
-                    
-                    <button type="submit" class="cta-button">上記の内容で申し込む</button>
-                </form>
+    <!-- ▼▼▼ 内部的なIDとnameの重複を修正しました ▼▼▼ -->
+    <label for="location">ご希望の教室*</label>
+    <select id="location" name="希望教室" required>
+        <option value="">選択してください</option>
+        <option value="今津センター">今津センター (日曜日)</option>
+        <option value="大津わにセンター">大津わにセンター (金曜日)</option>
+    </select>
+
+    <!-- ▼▼▼ 内部的なIDとnameの重複を修正しました ▼▼▼ -->
+    <label for="plan">ご希望のプラン*</label>
+    <select id="plan" name="希望プラン" required>
+        <option value="">選択してください</option>
+        <option value="無料体験レッスン">無料体験レッスン (0円)</option>
+        <option value="おためし3回レッスン">おためし3回レッスン (3,300円)</option>
+    </select>
+    <!-- ▲▲▲ 修正ここまで ▲▲▲ -->
+
+    <label for="message">ご希望日時やご質問など</label>
+    <textarea id="message" name="message" rows="4" placeholder="例：日曜日の午後希望です。カラオケが上手くなりたいです。"></textarea>
+    
+    <button type="submit" class="cta-button">上記の内容で申し込む</button>
+</form>
                 <p style="font-size: 0.9em; margin-top: 15px;">お電話でのお申し込みも歓迎です！ <a href="tel:0740222063" style="color: white; text-decoration: underline;" aria-label="電話で申し込み 0740-22-2063">0740-22-2063</a></p>
             </div>
         </section>
