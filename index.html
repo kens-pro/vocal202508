@@ -6,6 +6,13 @@
   <title>大人のボーカル・ボイストレーニング｜大津市和邇｜トリイミュージック</title>
   <meta name="description" content="声が小さくなった、高い声が出にくい、人前で歌う自信がない方へ。大津わにセンターの大人向け個人ボーカルレッスン。金曜日・新規2名受付。JR和邇駅徒歩1分、駐車場あり。">
   <meta name="theme-color" content="#111827">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJP8TCMJEY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LJP8TCMJEY');
+  </script>
   <link rel="icon" href="image/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -514,8 +521,6 @@
   <div class="mobile-cta" aria-label="お問い合わせ"><a class="tel js-cta" href="tel:0740222063" data-cta="mobile_tel">電話で相談</a><a class="apply js-cta" href="#entry" data-cta="mobile_form">体験を相談する →</a></div>
 
   <script>
-    window.dataLayer = window.dataLayer || [];
-
     document.querySelectorAll('.reveal').forEach((element) => {
       if (!('IntersectionObserver' in window)) { element.classList.add('is-visible'); return; }
       const observer = new IntersectionObserver((entries, currentObserver) => {
@@ -530,14 +535,14 @@
     });
 
     document.querySelectorAll('.js-cta').forEach((link) => {
-      link.addEventListener('click', () => window.dataLayer.push({ event: 'vocal_cta_click', cta_location: link.dataset.cta || 'unknown' }));
+      link.addEventListener('click', () => gtag('event', 'vocal_cta_click', { cta_location: link.dataset.cta || 'unknown' }));
     });
 
     document.querySelectorAll('.js-plan').forEach((link) => {
       link.addEventListener('click', () => {
         const plan = document.querySelector('#plan');
         if (plan) plan.value = link.dataset.plan || '';
-        window.dataLayer.push({ event: 'vocal_plan_select', plan: link.dataset.plan || 'unknown' });
+        gtag('event', 'vocal_plan_select', { plan: link.dataset.plan || 'unknown' });
       });
     });
 
@@ -554,7 +559,7 @@
 
     const trialForm = document.getElementById('trial-form');
     if (trialForm) {
-      trialForm.addEventListener('submit', () => window.dataLayer.push({ event: 'vocal_trial_attempt', plan: document.getElementById('plan')?.value || 'unknown' }));
+      trialForm.addEventListener('submit', () => gtag('event', 'vocal_trial_attempt', { plan: document.getElementById('plan')?.value || 'unknown' }));
     }
   </script>
   <script>
@@ -565,8 +570,7 @@
       formElement: '#trial-form',
       formId: 'xqalrprw',
       onSuccess: () => {
-        window.dataLayer.push({
-          event: 'vocal_trial_success',
+        gtag('event', 'vocal_trial_success', {
           plan: document.getElementById('plan')?.value || 'unknown'
         });
       },
