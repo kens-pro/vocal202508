@@ -469,6 +469,10 @@
           <input type="hidden" name="utm_source" id="utm_source">
           <input type="hidden" name="utm_medium" id="utm_medium">
           <input type="hidden" name="utm_campaign" id="utm_campaign">
+          <input type="hidden" name="utm_content" id="utm_content">
+          <input type="hidden" name="utm_term" id="utm_term">
+          <input type="hidden" name="landing_page" id="landing_page">
+          <input type="hidden" name="referrer" id="referrer">
           <label class="honeypot">この欄は入力しないでください<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
 
           <div class="form-row">
@@ -480,7 +484,9 @@
           <fieldset class="field" style="border:0;padding:0"><legend>近いお悩み（複数選択可）</legend><div class="checks"><label class="check"><input type="checkbox" name="悩み" value="声量が少ない">声量が少ない</label><label class="check"><input type="checkbox" name="悩み" value="高い声が出ない">高い声が出ない</label><label class="check"><input type="checkbox" name="悩み" value="人前で自信がない">人前で自信がない</label></div></fieldset>
           <div class="field"><label for="message">ご質問・ご希望時間</label><textarea id="message" name="message" placeholder="例：金曜日の午後を希望。まず空いている時間を知りたいです。"></textarea></div>
           <label class="privacy"><input type="checkbox" required><span><a href="https://www.toriimusic.co.jp/privacy_policy/" target="_blank" rel="noopener">プライバシーポリシー</a>を確認し、連絡に必要な個人情報の送信に同意します。</span></label>
-          <button class="button" type="submit">この内容で相談する</button>
+          <div data-fs-success role="status" aria-live="polite" style="display:none">送信できました。担当者からご連絡しますので、しばらくお待ちください。</div>
+          <div data-fs-error role="alert" aria-live="assertive"></div>
+          <button class="button" type="submit" data-fs-submit-btn>この内容で相談する</button>
           <p class="form-help">送信だけで入会は確定しません。担当者からのご連絡をもって体験日時を調整します。</p>
         </form>
       </div>
@@ -536,15 +542,43 @@
     });
 
     const params = new URLSearchParams(window.location.search);
-    ['utm_source', 'utm_medium', 'utm_campaign'].forEach((key) => {
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((key) => {
       const input = document.getElementById(key);
       if (input) input.value = params.get(key) || '';
     });
 
+    const landingPage = document.getElementById('landing_page');
+    if (landingPage) landingPage.value = window.location.href;
+    const referrer = document.getElementById('referrer');
+    if (referrer) referrer.value = document.referrer || '';
+
     const trialForm = document.getElementById('trial-form');
     if (trialForm) {
-      trialForm.addEventListener('submit', () => window.dataLayer.push({ event: 'vocal_trial_submit', plan: document.getElementById('plan')?.value || 'unknown' }));
+      trialForm.addEventListener('submit', () => window.dataLayer.push({ event: 'vocal_trial_attempt', plan: document.getElementById('plan')?.value || 'unknown' }));
     }
   </script>
+  <script>
+    window.formspree = window.formspree || function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+    formspree('initForm', {
+      formElement: '#trial-form',
+      formId: 'xqalrprw',
+      onSuccess: () => {
+        window.dataLayer.push({
+          event: 'vocal_trial_success',
+          plan: document.getElementById('plan')?.value || 'unknown'
+        });
+      },
+      renderSuccess: ({ form }) => {
+        const success = form.querySelector('[data-fs-success]');
+        if (success) success.style.display = 'block';
+        form.querySelectorAll('input, select, textarea, button').forEach((element) => {
+          element.disabled = true;
+        });
+      }
+    });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
