@@ -585,6 +585,7 @@
             plan: document.getElementById('plan')?.value || 'unknown'
           });
           if (success) success.style.display = 'block';
+          submitButton.textContent = '送信済み';
           trialForm.querySelectorAll('input, select, textarea, button').forEach((element) => {
             element.disabled = true;
           });
