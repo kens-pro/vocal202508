@@ -559,30 +559,43 @@
 
     const trialForm = document.getElementById('trial-form');
     if (trialForm) {
-      trialForm.addEventListener('submit', () => gtag('event', 'vocal_trial_attempt', { plan: document.getElementById('plan')?.value || 'unknown' }));
+      trialForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const submitButton = trialForm.querySelector('button[type="submit"]');
+        const success = trialForm.querySelector('[data-fs-success]');
+        const error = trialForm.querySelector('[data-fs-error]');
+        const originalLabel = submitButton.textContent;
+
+        if (success) success.style.display = 'none';
+        if (error) error.textContent = '';
+        submitButton.disabled = true;
+        submitButton.textContent = '送信中…';
+        gtag('event', 'vocal_trial_attempt', { plan: document.getElementById('plan')?.value || 'unknown' });
+
+        try {
+          const response = await fetch(trialForm.action, {
+            method: 'POST',
+            body: new FormData(trialForm),
+            headers: { Accept: 'application/json' }
+          });
+
+          if (!response.ok) throw new Error(`Formspree returned ${response.status}`);
+
+          gtag('event', 'vocal_trial_success', {
+            plan: document.getElementById('plan')?.value || 'unknown'
+          });
+          if (success) success.style.display = 'block';
+          trialForm.querySelectorAll('input, select, textarea, button').forEach((element) => {
+            element.disabled = true;
+          });
+        } catch (submitError) {
+          console.error(submitError);
+          if (error) error.textContent = '送信できませんでした。時間を置いて再度お試しいただくか、0740-22-2063へお電話ください。';
+          submitButton.disabled = false;
+          submitButton.textContent = originalLabel;
+        }
+      });
     }
   </script>
-  <script>
-    window.formspree = window.formspree || function () {
-      (formspree.q = formspree.q || []).push(arguments);
-    };
-    formspree('initForm', {
-      formElement: '#trial-form',
-      formId: 'xqalrprw',
-      onSuccess: () => {
-        gtag('event', 'vocal_trial_success', {
-          plan: document.getElementById('plan')?.value || 'unknown'
-        });
-      },
-      renderSuccess: ({ form }) => {
-        const success = form.querySelector('[data-fs-success]');
-        if (success) success.style.display = 'block';
-        form.querySelectorAll('input, select, textarea, button').forEach((element) => {
-          element.disabled = true;
-        });
-      }
-    });
-  </script>
-  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
