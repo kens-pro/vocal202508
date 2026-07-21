@@ -539,15 +539,26 @@
       observer.observe(element);
     });
 
+    const ga4MeasurementId = 'G-LJP8TCMJEY';
+    const ga4DebugMode = new URLSearchParams(window.location.search).get('debug_mode') === 'true';
+    const sendGaEvent = (eventName, eventParams = {}) => {
+      gtag('event', eventName, {
+        ...eventParams,
+        send_to: ga4MeasurementId,
+        transport_type: 'beacon',
+        ...(ga4DebugMode ? { debug_mode: true } : {})
+      });
+    };
+
     document.querySelectorAll('.js-cta').forEach((link) => {
-      link.addEventListener('click', () => gtag('event', 'vocal_cta_click', { cta_location: link.dataset.cta || 'unknown' }));
+      link.addEventListener('click', () => sendGaEvent('vocal_cta_click', { cta_location: link.dataset.cta || 'unknown' }));
     });
 
     document.querySelectorAll('.js-plan').forEach((link) => {
       link.addEventListener('click', () => {
         const plan = document.querySelector('#plan');
         if (plan) plan.value = link.dataset.plan || '';
-        gtag('event', 'vocal_plan_select', { plan: link.dataset.plan || 'unknown' });
+        sendGaEvent('vocal_plan_select', { plan: link.dataset.plan || 'unknown' });
       });
     });
 
@@ -576,7 +587,7 @@
         submitButton.disabled = true;
         submitButton.textContent = '送信中…';
         const selectedPlan = document.getElementById('plan')?.value || 'unknown';
-        gtag('event', 'vocal_form_attempt', { plan: selectedPlan });
+        sendGaEvent('vocal_form_attempt', { plan: selectedPlan });
 
         try {
           const response = await fetch(trialForm.action, {
@@ -590,7 +601,7 @@
           const successEvent = selectedPlan === '空き時間・内容の質問'
             ? 'vocal_inquiry_success'
             : 'vocal_trial_success';
-          gtag('event', successEvent, { plan: selectedPlan });
+          sendGaEvent(successEvent, { plan: selectedPlan });
           if (success) success.style.display = 'block';
           submitButton.textContent = '送信済み';
           trialForm.querySelectorAll('input, select, textarea, button').forEach((element) => {
