@@ -575,7 +575,8 @@
         if (error) error.textContent = '';
         submitButton.disabled = true;
         submitButton.textContent = '送信中…';
-        gtag('event', 'vocal_trial_attempt', { plan: document.getElementById('plan')?.value || 'unknown' });
+        const selectedPlan = document.getElementById('plan')?.value || 'unknown';
+        gtag('event', 'vocal_form_attempt', { plan: selectedPlan });
 
         try {
           const response = await fetch(trialForm.action, {
@@ -586,9 +587,10 @@
 
           if (!response.ok) throw new Error(`Formspree returned ${response.status}`);
 
-          gtag('event', 'vocal_trial_success', {
-            plan: document.getElementById('plan')?.value || 'unknown'
-          });
+          const successEvent = selectedPlan === '空き時間・内容の質問'
+            ? 'vocal_inquiry_success'
+            : 'vocal_trial_success';
+          gtag('event', successEvent, { plan: selectedPlan });
           if (success) success.style.display = 'block';
           submitButton.textContent = '送信済み';
           trialForm.querySelectorAll('input, select, textarea, button').forEach((element) => {
